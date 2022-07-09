@@ -60,25 +60,17 @@ public class TelaFornecedor extends JFrame {
 
 		JButton editarBtn = new JButton("Editar");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane
-				.setHorizontalGroup(
-						gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(filtroLbl, GroupLayout.PREFERRED_SIZE, 28,
-												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap())
-								.addComponent(filtroEdt, GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup().addContainerGap().addComponent(listarBtn,
-												GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup().addContainerGap()
-												.addComponent(adicionarBtn))
-								.addGroup(Alignment.TRAILING,
-										gl_contentPane.createSequentialGroup().addGap(198)
-												.addComponent(editarBtn, GroupLayout.DEFAULT_SIZE,
-														GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addPreferredGap(ComponentPlacement.RELATED).addComponent(removerBtn)));
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(filtroEdt, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap(286, Short.MAX_VALUE)
+						.addComponent(listarBtn, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(adicionarBtn))
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(198)
+						.addComponent(editarBtn, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+						.addPreferredGap(ComponentPlacement.RELATED).addComponent(removerBtn))
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addComponent(filtroLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap()));
 		gl_contentPane
 				.setVerticalGroup(
 						gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -89,7 +81,7 @@ public class TelaFornecedor extends JFrame {
 												.addComponent(filtroEdt, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addPreferredGap(ComponentPlacement.RELATED).addComponent(listarBtn)
-												.addPreferredGap(ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+												.addPreferredGap(ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
 												.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 														.addComponent(removerBtn).addComponent(editarBtn))
 												.addContainerGap()));
