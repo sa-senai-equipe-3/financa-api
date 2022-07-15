@@ -49,11 +49,11 @@ public class ListagemTableModel extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
 		if (columnIndex == 0) {
-			return this.fornecedores.get(columnIndex).getId();
+			return this.fornecedores.get(rowIndex).getId();
 		}
 
 		else if (columnIndex == 1) {
-			return this.fornecedores.get(columnIndex).getNomeFantasia();
+			return this.fornecedores.get(rowIndex).getNomeFantasia();
 		}
 
 		throw new IllegalArgumentException("Índice inválido");

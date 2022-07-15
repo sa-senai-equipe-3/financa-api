@@ -93,18 +93,17 @@ public class TelaFornecedor extends JFrame {
 						.addComponent(filtroLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap())
 				.addGroup(gl_contentPane.createSequentialGroup().addComponent(adicionarBtn).addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 347, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(15, Short.MAX_VALUE)));
+				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup().addContainerGap().addComponent(adicionarBtn)
 				.addPreferredGap(ComponentPlacement.RELATED).addComponent(filtroLbl)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(filtroEdt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 						GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED).addComponent(listarBtn).addGap(33)
-				.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE).addGroup(gl_contentPane
+				.addPreferredGap(ComponentPlacement.RELATED).addComponent(listarBtn)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+				.addPreferredGap(ComponentPlacement.UNRELATED).addGroup(gl_contentPane
 						.createParallelGroup(Alignment.BASELINE).addComponent(removerBtn).addComponent(editarBtn))
 				.addContainerGap()));
 		contentPane.setLayout(gl_contentPane);
