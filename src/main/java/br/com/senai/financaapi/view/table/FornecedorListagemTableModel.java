@@ -4,7 +4,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import br.com.senai.financaapi.entity.Fornecedor;
 
-public class ListagemTableModel extends AbstractTableModel {
+public class FornecedorListagemTableModel extends AbstractTableModel {
 
 	/**
 	 * 
@@ -14,7 +14,7 @@ public class ListagemTableModel extends AbstractTableModel {
 	private List<Fornecedor> fornecedores;
 
 	// Construtor
-	public ListagemTableModel(List<Fornecedor> fornecedores) {
+	public FornecedorListagemTableModel(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
 	}
 

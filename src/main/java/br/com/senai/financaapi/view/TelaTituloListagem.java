@@ -1,30 +1,28 @@
 package br.com.senai.financaapi.view;
 
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.TableColumnModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import br.com.senai.financaapi.controller.TituloController;
+import br.com.senai.financaapi.entity.Titulo;
+import br.com.senai.financaapi.view.table.TituloListagemTableModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.TableColumnModel;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import br.com.senai.financaapi.controller.FornecedorController;
-import br.com.senai.financaapi.entity.Fornecedor;
-import br.com.senai.financaapi.view.table.ListagemTableModel;
+import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @Component
-public class TelaFornecedor extends JFrame {
+public class TelaTituloListagem extends JFrame {
 
 	/**
 	 * 
@@ -35,11 +33,11 @@ public class TelaFornecedor extends JFrame {
 	private TableColumnModel cm;
 
 	@Autowired
-	private FornecedorController fornecedorController;
+	private TituloController tituloController;
 
-	private void atualizarTableListagem(JTable tabela) {
-		List<Fornecedor> fornecedores = fornecedorController.listarPor(filtroEdt.getText());
-		ListagemTableModel modelo = new ListagemTableModel(fornecedores);
+	private void updTituloListagemTableModel(JTable tabela) {
+		List<Titulo> titulos = tituloController.listarPor(filtroEdt.getText());
+		TituloListagemTableModel modelo = new TituloListagemTableModel(titulos);
 		tabela.setModel(modelo);
 		cm = tabela.getColumnModel();
 		cm.getColumn(0).setPreferredWidth(50);
@@ -47,13 +45,17 @@ public class TelaFornecedor extends JFrame {
 		tabela.updateUI();
 	}
 
+	public void mostrar() {
+		this.setVisible(true);
+	}
+
 	/**
 	 * Create the frame.
 	 */
-	public TelaFornecedor() {
-		setTitle("Fornecedor (LISTAGEM) - SA System 1.3");
+	public TelaTituloListagem() {
+		setTitle("Título (LISTAGEM) - SA System 1.3");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 350);
+		setBounds(100, 100, 475, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,44 +67,41 @@ public class TelaFornecedor extends JFrame {
 
 		JButton adicionarBtn = new JButton("Adicionar");
 
-		JButton listarBtn = new JButton("Listar");
-		listarBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				atualizarTableListagem(tabela);
-			}
-		});
-
 		JLabel filtroLbl = new JLabel("Filtro");
 
 		filtroEdt = new JTextField();
 		filtroEdt.setColumns(10);
 
+		JButton listarBtn = new JButton("Listar");
+		listarBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updTituloListagemTableModel(tabela);
+			}
+		});
+
 		JButton removerBtn = new JButton("Remover");
 
 		JButton editarBtn = new JButton("Editar");
-
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup().addComponent(filtroLbl).addContainerGap(350,
+						Short.MAX_VALUE))
 				.addComponent(filtroEdt, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap(286, Short.MAX_VALUE)
-						.addComponent(listarBtn, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup().addGap(198)
-						.addComponent(editarBtn, GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-						.addPreferredGap(ComponentPlacement.RELATED).addComponent(removerBtn))
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(filtroLbl, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup().addComponent(adicionarBtn).addContainerGap())
-				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE));
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(adicionarBtn))
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap().addComponent(listarBtn,
+						GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
+				.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+				.addGroup(gl_contentPane.createSequentialGroup().addGap(223)
+						.addComponent(editarBtn, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED).addComponent(removerBtn)));
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup().addContainerGap().addComponent(adicionarBtn)
 				.addPreferredGap(ComponentPlacement.RELATED).addComponent(filtroLbl)
 				.addPreferredGap(ComponentPlacement.RELATED)
 				.addComponent(filtroEdt, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 						GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(ComponentPlacement.RELATED).addComponent(listarBtn)
-				.addPreferredGap(ComponentPlacement.RELATED)
-				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+				.addGap(18).addComponent(listarBtn).addGap(18)
+				.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
 				.addPreferredGap(ComponentPlacement.UNRELATED).addGroup(gl_contentPane
 						.createParallelGroup(Alignment.BASELINE).addComponent(removerBtn).addComponent(editarBtn))
 				.addContainerGap()));
